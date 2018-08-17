@@ -28,25 +28,7 @@ public class Banking {
 
 
 
-//        do{
-//            System.out.println("Mời bạn nhập vào số tiền:");
-//            while(sc.nextDouble()){
-//                System.out.println("Invalid");
-//            }
-//            money = sc.nextDouble();
-//            System.out.println("Mời bạn nhập vào số tháng");
-//            while(months){
-//                System.out.println("Invalid");
-//            }
-//
-//             months = sc.nextInt();
-//        } while( money <=0  && months <=0);
-//        for(int i = 0 ;i < months ; i ++){
-//            double interestMoney = money*0.3/100;
-//            System.out.println();
-//            double total = money+interestMoney;
-//            System.out.println(total);
-//        }
+
 
 
 
