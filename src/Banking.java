@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class Banking {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int months;
+        double money;
+
+
+        do{
+            System.out.println("Mời bạn nhập vào số tháng lớn hơn 0");
+            months = sc.nextInt();
+        }while(months<=0);
+
+        do{
+            System.out.println("Mời bạn nhập vào số tiền:");
+            money = sc.nextDouble();
+        }while(money<=0);
+
+        for (int i = 0; i <months ; i++) {
+           money = money + (money*0.3/100);
+
+        }
+        System.out.println("Tổng số tiền bạn nhận được sau khi đầu tư "+ months + "tháng" + " là "+money);
+
+
+
+
+
+//        do{
+//            System.out.println("Mời bạn nhập vào số tiền:");
+//            while(sc.nextDouble()){
+//                System.out.println("Invalid");
+//            }
+//            money = sc.nextDouble();
+//            System.out.println("Mời bạn nhập vào số tháng");
+//            while(months){
+//                System.out.println("Invalid");
+//            }
+//
+//             months = sc.nextInt();
+//        } while( money <=0  && months <=0);
+//        for(int i = 0 ;i < months ; i ++){
+//            double interestMoney = money*0.3/100;
+//            System.out.println();
+//            double total = money+interestMoney;
+//            System.out.println(total);
+//        }
+
+
+
+
+    }
+}
