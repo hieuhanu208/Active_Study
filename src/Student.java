@@ -1,112 +1,117 @@
-package nhapdssinhvien;
+import java.util.Scanner;
 
 public class Student {
+    public static String name;
+    static float javaScore;
+    static float attendaceScore;
+    String isRanked;
+    float avgScore;
     
-    private String mssv;
-    float diemTin;
-    float diemJava;
-    float diemChuyenCan;
-    float diemTB;
-    String xepLoai;
-    
-    public void setMSSV(String mssv) {
-        this.mssv = mssv;
-    }
-    public String getMSSV() {
-        return (mssv);
-    }
-    public void setDiemTin(float diemTin) {
-        this.diemTin = diemTin;
-    }
-    public float getDiemTin() {
-        return (diemTin);
-    }
-    public void setDiemJava(float diemJava) {
-        this.diemJava = diemJava;
-    }
-    public float getDiemJava() {
-        return (diemJava);
-    }
-    public void setDiemChuyenCan(float diemChuyenCan) {
-        this.diemChuyenCan = diemChuyenCan;
-    }
-    public float getDiemChuyenCan() {
-        return (diemChuyenCan);
-    }
-    public void setDiemTB(float diemTB) {
-        this.diemTB = diemTB;
-    }
-    public float getDiemTB() {
-        return (diemTB);
-    }
-    public void setXepLoai(String xepLoai) {
-        this.xepLoai = xepLoai;
-    }
-    public String getXepLoai() {
-        return (xepLoai);
+    public String getName() {
+        return name;
     }
     
-    public void tinhDiemTB() {
-        diemTB=((diemTin * 2 + diemChuyenCan + diemJava * 3) / 6);
+    public void setName(String name) {
+        this.name = name;
     }
     
-    public void xepLoai() {
-        if (diemTB > 9) {
-            xepLoai=("Xuất sắc");
-        } else if (diemTB > 8) {
-            xepLoai=("Giỏi");
-        } else if (diemTB > 7) {
-            xepLoai=("Khá");
-        } else if (diemTB > 5) {
-            xepLoai=("Trung bình");
-        } else if (diemTB > 3) {
-            xepLoai=("Yếu");
+    public float getJavaScore() {
+        return javaScore;
+    }
+    
+    public void setJavaScore(float javaScore) {
+        this.javaScore = javaScore;
+    }
+    
+    public float getAttendaceScore() {
+        return attendaceScore;
+    }
+    
+    public void setAttendaceScore(float attendaceScore) {
+        this.attendaceScore = attendaceScore;
+    }
+    
+    public float getAvgScore() {
+        return avgScore;
+    }
+    
+    public void setAvgScore(float avgScore) {
+        this.avgScore = avgScore;
+    }
+    
+    public String getIsRanked() {
+        return isRanked;
+    }
+    
+    public void setIsRanked(String isRanked) {
+        this.isRanked = isRanked;
+    }
+    
+    public void scoreRanking() {
+        avgScore = (javaScore * 2 + attendaceScore) / 3;
+        System.out.println(avgScore);
+    }
+    
+    public void raking() {
+        if (avgScore > 9.0) {
+            isRanked = ("Xuất sắc");
+        } else if (avgScore > 8.0) {
+            isRanked = ("Giỏi");
+        } else if (avgScore > 7.0) {
+            isRanked = ("Khá");
+        } else if (avgScore > 5.0) {
+            isRanked = ("Trung bình");
+        } else if (avgScore > 3.0) {
+            isRanked = ("Yếu");
         } else {
-            xepLoai=("Kém");
+            isRanked = ("Kém");
         }
-        System.out.println("Loại: " + xepLoai);
+        
     }
     
     public static void main(String[] args) {
-        
+        System.out.println("Mời nhập số lượng sinh viên:");
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập n: ");
-        
         int n = sc.nextInt();
+        sc.nextLine();
         
-        SinhVien[] q = new SinhVien[n];
+        Student st[] = new Student[n];
+        
         for (int i = 0; i < n; i++) {
             sc.nextLine();
-            q[i] = new SinhVien();
-            System.out.print("Nhập MSSV: ");
-            String mssv = sc.nextLine();
-            q[i].setMSSV(mssv);
-            System.out.print("Nhập điểm Chuyên cần : ");
-            q[i].diemChuyenCan = sc.nextFloat();
-            System.out.print("Nhập điểm Java : ");
-            q[i].diemJava = sc.nextFloat();
-            System.out.print("Nhập điểm Tin : ");
-            q[i].diemTin = sc.nextFloat();
-            q[i].tinhDiemTB();
-            q[i].xepLoai();
-            System.out.println(q[i].getDiemTB() + "\n");
+            st[i] = new Student();
+            System.out.println("Mời nhập tên sinh viên thứ " + (i + 1) + ":");
+            name = sc.nextLine();
+            st[i].setName(name);
+            System.out.println("Mời nhập điểm Java sinh viên");
+            javaScore = sc.nextFloat();
+            st[i].setJavaScore(javaScore);
+            System.out.println("Mời bạnh nhập điểm chuyên cần");
+            attendaceScore = sc.nextFloat();
+            st[i].setAttendaceScore(attendaceScore);
+            st[i].raking();
+            st[i].scoreRanking();
+            
         }
-        
         for (int u = 0; u < n; u++) {
-            for (int v = n - 1; v >= u; v--) {
-                if (q[v].diemTB < q[u].diemTB) {
-                    SinhVien temp = q[v];
-                    q[v] = q[u];
-                    q[u] = temp;
+            for (int v = u - 1; v >= u; v--) {
+                if (st[v].getAvgScore() < st[u].getAvgScore()) {
+                    Student temp = st[v];
+                    st[v] = st[u];
+                    st[u] = temp;
                 }
             }
         }
-        // vòng lặp dùng for(<variable> : <collection>)
-        for (SinhVien u : q) {
-            System.out.printf("%3s %10s %4f \n", u.getMSSV(), u.getXepLoai(), u.getDiemTB());
+        System.out.println("====================Thông tin SV sau khi sắp xếp điểm TB ============");
+        for (int i = 0; i < n; i++) {
+            System.out.println("Name:" + st[i].getName());
+            System.out.println("Java Score:" + st[i].getJavaScore());
+            System.out.println("Attendace Score:" + st[i].getAttendaceScore());
+            System.out.println("Average Score:" + st[i].getAvgScore());
+            
             
         }
-        
     }
+    
+    
 }
-
