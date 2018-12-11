@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Calculator {
 
     public static void main(String[] args) {
-        System.out.print("Nhập số nguyên dương n = ");
+        System.out.print("Nhập số nguyên dương n:  " );
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int total = 0;
