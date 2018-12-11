@@ -6,6 +6,7 @@ public class Banking {
         Scanner sc = new Scanner(System.in);
         int months;
         double money;
+        double a;
 
 
         do{
